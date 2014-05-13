@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="../three/build/three.js"></script>
+        <script src="./dist/js/lasertutor.js"></script>
+        <title>New Web Project</title>
+    </head>
+    <body>
+        <h1>New Web Project Page</h1>
+        <script>
+            var creator = function(sliderLabel) {
+		    return function(evt) {
+			    sliderLabel.textContent = "slider moved!";
+		    };
+	    };
+            window.onload = function() {
+		    var slider = lasertutor.createSlider(creator, "testSlider", 1000, 0, 1);
+		    document.body.appendChild(slider);
+		    scene = new lasertutor.NavigableScene(document.body);
+		    scene.render();
+	    };
+
+        </script>
+        <div id="three"></div>
+        <div id="slider1"></div>
+        <div id="slider2"></div>
+        <div id="text">
+        </div>
+    </body>
+</html>
