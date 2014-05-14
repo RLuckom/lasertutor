@@ -59,7 +59,7 @@ class NavigableScene extends NavigationUI
     requestAnimationFrame this.render
     this.renderer.render this.scene, this.camera
 
-  addObject: (mesh) ->
+  add: (mesh) ->
     this.scene.add mesh
 
 module.NavigableScene = NavigableScene

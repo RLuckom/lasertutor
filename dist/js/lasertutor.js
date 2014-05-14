@@ -1,5 +1,5 @@
 (function() {
-  var NavigableScene, NavigationUI, ThreeDNavController, createSlider, exports, module, registerGlobal,
+  var Axes, NavigableScene, NavigationUI, ThreeDNavController, createSlider, exports, module, registerGlobal,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -210,7 +210,7 @@
       return this.renderer.render(this.scene, this.camera);
     };
 
-    NavigableScene.prototype.addObject = function(mesh) {
+    NavigableScene.prototype.add = function(mesh) {
       return this.scene.add(mesh);
     };
 
@@ -251,5 +251,43 @@
   })();
 
   module.ThreeDNavController = ThreeDNavController;
+
+  Axes = (function() {
+    function Axes() {
+      var x_geometry, x_material, y_geometry, y_material, z_geometry, z_material;
+      x_material = new THREE.LineBasicMaterial({
+        color: 0x0000ff
+      });
+      x_geometry = new THREE.Geometry();
+      x_geometry.vertices.push(new THREE.Vector3(-100, 0, 0));
+      x_geometry.vertices.push(new THREE.Vector3(100, 0, 0));
+      this.x_axis = new THREE.Line(x_geometry, x_material);
+      y_material = new THREE.LineBasicMaterial({
+        color: 0x00ff00
+      });
+      y_geometry = new THREE.Geometry();
+      y_geometry.vertices.push(new THREE.Vector3(0, -100, 0));
+      y_geometry.vertices.push(new THREE.Vector3(0, 100, 0));
+      this.y_axis = new THREE.Line(y_geometry, y_material);
+      z_material = new THREE.LineBasicMaterial({
+        color: 0xff0000
+      });
+      z_geometry = new THREE.Geometry();
+      z_geometry.vertices.push(new THREE.Vector3(0, 0, -100));
+      z_geometry.vertices.push(new THREE.Vector3(0, 0, 100));
+      this.z_axis = new THREE.Line(z_geometry, z_material);
+    }
+
+    Axes.prototype.addTo = function(scene) {
+      scene.add(this.x_axis);
+      scene.add(this.y_axis);
+      return scene.add(this.z_axis);
+    };
+
+    return Axes;
+
+  })();
+
+  module.Axes = Axes;
 
 }).call(this);

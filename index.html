@@ -22,6 +22,8 @@
 		    var slider = lasertutor.createSlider(creator, "testSlider", 1000, 0, 1);
 		    document.body.appendChild(slider);
 		    scene = new lasertutor.NavigableScene(document.body);
+		    var axes = new lasertutor.Axes();
+		    axes.addTo(scene);
 		    scene.render();
 	    };
 

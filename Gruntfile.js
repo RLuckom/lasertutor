@@ -62,7 +62,8 @@ module.exports = function(grunt) {
 						       'coffee/createSlider.coffee',
 						       'coffee/NavigationUI.coffee',
 						       'coffee/NavigableScene.coffee',
-						       'coffee/ThreeDNavController.coffee'
+						       'coffee/ThreeDNavController.coffee',
+						       'coffee/Axes.coffee'
 						      ],
 		    'test/js/test_compiled.js' : 'test/coffee/**/*.coffee'
                 }
