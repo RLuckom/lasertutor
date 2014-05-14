@@ -21,7 +21,3 @@ createSlider = (callbackCreator, uniqueName, max, min, step) ->
   return sliderDiv
 
 module.createSlider = createSlider
-
-s = (x) -> x * x
-
-module.s = s

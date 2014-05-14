@@ -46,7 +46,6 @@ class NavigationUI
   #
   # @param [Event] evt
   mouseUp: (evt) =>
-    console.log 'mu'
     this.interacting = false
 
   # touchstart event callback. Sets this.interacting to true and sets

@@ -1,8 +1,4 @@
 (function() {
-  test("hello test", function() {
-    return ok(lasertutor.s(10) === 100, "passed");
-  });
-
   test('test mouseDownCallback', function() {
     var div, evt, navElement;
     div = document.createElement('div');
