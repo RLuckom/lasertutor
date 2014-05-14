@@ -50,13 +50,13 @@
 
   NavigationUI = (function() {
     function NavigationUI(element) {
+      this.element = element;
       this.getMouseXY = __bind(this.getMouseXY, this);
       this.getTouchXY = __bind(this.getTouchXY, this);
       this.touchEnd = __bind(this.touchEnd, this);
       this.touchStart = __bind(this.touchStart, this);
       this.mouseUp = __bind(this.mouseUp, this);
       this.mouseDown = __bind(this.mouseDown, this);
-      this.element = element;
       this.startPoint = {
         x: 50,
         y: 50

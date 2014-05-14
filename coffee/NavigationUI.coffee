@@ -16,17 +16,16 @@ class NavigationUI
   #
   # @param [DOMNode] element the element to listen on / use to calculate
   #   positions.
-  constructor: (element) ->
-    this.element = element
+  constructor: (@element) ->
     this.startPoint = x: 50, y: 50
     this.interacting = false
-    this.element.addEventListener 'mousedown', this.mouseDown
+    @element.addEventListener 'mousedown', this.mouseDown
     window.addEventListener 'mouseup', this.mouseUp
-    this.element.addEventListener 'mousemove', this.mouseMove
-    this.element.addEventListener 'wheel', this.mouseWheel
-    this.element.addEventListener 'touchstart', this.touchStart
+    @element.addEventListener 'mousemove', this.mouseMove
+    @element.addEventListener 'wheel', this.mouseWheel
+    @element.addEventListener 'touchstart', this.touchStart
     window.addEventListener 'touchend', this.touchEnd
-    this.element.addEventListener 'touchmove', this.touchMove
+    @element.addEventListener 'touchmove', this.touchMove
 
   # mousedown event callback. Sets this.interacting to true and sets
   # this.startPoint to the local (element-frame) x and y coordinates.
@@ -70,7 +69,7 @@ class NavigationUI
   # @param [TouchEvent] evt
   # @return [Object] {x: Number, y: Number} coordinates within the element
   getTouchXY: (evt) =>
-    rect = this.element.getBoundingClientRect()
+    rect = @element.getBoundingClientRect()
     x: evt.targetTouches[0].clientX - rect.left,
     y: evt.targetTouches[0].clientY - rect.top
 
@@ -80,7 +79,7 @@ class NavigationUI
   # @param [Event] evt
   # @return [Object] {x: Number, y: Number} coordinates within the element
   getMouseXY: (evt) =>
-    rect = this.element.getBoundingClientRect()
+    rect = @element.getBoundingClientRect()
     x: evt.clientX - rect.left
     y: evt.clientY - rect.top
 
