@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: ['js/**/*.js'],
+                src: ['./js/templates/*.js', 'js/**/*.js'],
                 dest: 'dist/js/<%= pkg.name %>.js'
             },
 	    test: {
@@ -60,36 +60,55 @@ module.exports = function(grunt) {
                 files: {
                     'js/<%= pkg.name %>_compiled.js': ['coffee/registerGlobal.coffee',
 						       'coffee/createSlider.coffee',
+						       'coffee/ThreeDNavController.coffee',
 						       'coffee/NavigationUI.coffee',
 						       'coffee/NavigableScene.coffee',
-						       'coffee/ThreeDNavController.coffee',
-						       'coffee/Axes.coffee'
+						       'coffee/Axes.coffee',
+						       'coffee/testHandleBars.coffee'
 						      ],
-		    'test/js/test_compiled.js' : 'test/coffee/**/*.coffee'
+		    'test/js/test_compiled.js' : ['test/coffee/qunitExtensions.coffee',
+		                                  'test/coffee/testqunitExtensions.coffee',
+		                                  'test/coffee/testThreeDNavController.coffee',
+						  'test/coffee/testNavigationUI.coffee']
                 }
             }
         },
 
-        sass: {
+        compass: {
             dist: {
-                files: {
-                    'dist/css/style.css' : 'sass/*.scss'
-                }
-            }
+		options: {
+                    cssDir: 'dist/css/',
+		    sassDir: 'sass/'
+                    }
+	    }
         },
+
+	handlebars: {
+            compile: {
+		 options: {
+		   processName: function(filename) {
+			   return filename.replace(/.*\/(.*)\.hbs/, '$1');
+		   }
+		 },
+		 files: {
+		    "js/templates/<%= pkg.name %>-handlebars-compiled.js": "js/templates/*.hbs"
+		 }
+	    }
+	},
+
 
         watch: {
             css: {
                 files: 'sass/*.scss',
-                tasks: ['sass']
+                tasks: ['compass']
             },
             coffee: {
                 files: ['coffee/**/*.coffee', 'test/coffee/**/*.coffee'],
                 tasks: ['coffee', 'codo']
             },
             js: {
-                files: ['js/**/*.js', 'test/**/*.js'],
-                tasks: ['jshint', 'concat', 'uglify', 'qunit']
+                files: ['js/**/*.js', 'test/**/*.js', 'js/templates/*.hbs'],
+                tasks: ['handlebars', 'jshint', 'concat', 'uglify', 'qunit']
             }
         }
     });
@@ -98,9 +117,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-coffee');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-codo');
 
     grunt.registerTask('test', ['coffee', 'jshint', 'qunit']);

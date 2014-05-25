@@ -1,33 +1,37 @@
 class NavigableScene extends NavigationUI
 
-  constructor: (element) ->
-    this.ZOOMFACTOR = -.3
-    this.ROTATIONFACTOR = .006
-    super element
-    this.scene = new THREE.Scene()
+  constructor: (@element) ->
+    @ZOOMFACTOR = -.3
+    @MIN_ZOOM = 0.01
+    @RADIANS_PER_FRAME_UNIT = Math.PI
+    super @element
+    @yaw = 0
+    @pitch = 0
+    @scene = new THREE.Scene()
     cylGeom = new THREE.CylinderGeometry .4, .4, .2, 16
     cylMat = new THREE.MeshBasicMaterial color: 0xffff00
-    this.focalPoint = new THREE.Mesh cylGeom, cylMat
-    this.scene.add this.focalPoint
-    this.camera = new THREE.PerspectiveCamera 75, 1, 0.1, 1000
-    this.camera.position.z = 5
-    # this.focalPoint.add this.camera
-    this.startCameraMatrix = this.camera.matrix.clone()
-    this.renderer = new THREE.WebGLRenderer()
-    element.appendChild this.renderer.domElement
-    this.renderer.setSize 500, 500
+    @focalPoint = new THREE.Mesh cylGeom, cylMat
+    @scene.add @focalPoint
+    @camera = new THREE.PerspectiveCamera 75, 1, 0.1, 1000
+    @camera.position.z = 5
+    @focalPoint.add @camera
+    @startCameraMatrix = @camera.matrix.clone()
+    @renderer = new THREE.WebGLRenderer()
+    @element.appendChild @renderer.domElement
+    @renderer.setSize 500, 500
     this.interactionRegime = this.revolveCamera
+    @controller = new lasertutor.ThreeDNavController()
 
   mouseDown: (evt) =>
     super evt
-    this.startCameraMatrix = this.camera.matrix.clone()
+    @startFocalRotation = @focalPoint.rotation.clone()
     this.interactionRegime = switch evt.button
       when 0 then (evt) -> this.revolveCamera this.getMouseXY evt
       when 4 then (evt) -> this.translateFocalPoint this.getMouseXY evt
 
   touchStart: (evt) =>
     super evt
-    this.startCameraMatrix = this.camera.matrix.clone()
+    @startFocalRotation = @focalPoint.rotation.clone()
     this.interactionRegime = switch evt.targetTouches.length
       when 1 then (evt2) -> this.revolveCamera this.getTouchXY evt2
       when 2 then this.zoom
@@ -37,29 +41,41 @@ class NavigableScene extends NavigationUI
     if this.interacting then this.interactionRegime evt
 
   revolveCamera: (xyPoint) =>
-    dX = (this.startPoint.x - xyPoint.x)
-    dY = (this.startPoint.y - xyPoint.y)
-    theta = this.ROTATIONFACTOR * Math.sqrt dX * dX + dY * dY
-    rotationVector = new THREE.Vector3 0, dX, dY
-    rotationVector.normalize()
-    rotationMatrix = new THREE.Matrix4()
-    rotationMatrix.makeRotationAxis rotationVector, theta
-    rotationMatrix.multiply this.startCameraMatrix
-    this.camera.position.setFromMatrixPosition rotationMatrix
-    console.log this.camera.position.toSource()
-    this.camera.rotation.setFromRotationMatrix rotationMatrix
-
+    previous_pitch = @pitch
+    previous_yaw = @yaw
+    console.log @startPoint.toSource(), xyPoint.toSource()
+    console.log @camera.position.toSource()
+    mouseTravel = @controller.normalizeMouseTravel(
+      @element.offsetWidth, @element.offsetHeight, this.startPoint, xyPoint
+    )
+    pitch_axis = @controller.pitchRotationAxis @yaw
+    @yaw = @controller.clampAngle0_2PI(
+      @yaw + @RADIANS_PER_FRAME_UNIT * mouseTravel.x
+    )
+    @pitch += @RADIANS_PER_FRAME_UNIT * mouseTravel.y
+    @pitch = if @pitch > Math.PI then Math.PI else @pitch
+    @pitch = if @pitch < 0 then 0 else @pitch
+    console.log @yaw, @pitch, pitch_axis.toSource()
+    @focalPoint.rotation.x += pitch_axis.x * (@pitch - previous_pitch)
+    @focalPoint.rotation.y += pitch_axis.y * (@pitch - previous_pitch)
+    @focalPoint.rotation.z -= @yaw - previous_yaw
+    rotation = @controller.mouseXYToCameraRotation(
+      mouseTravel.x, mouseTravel.y, @yaw, @RADIANS_PER_FRAME_UNIT
+    )
+    #@focalPoint.applyMatrix rotation
+    @startPoint = xyPoint
 
   mouseWheel: (evt) =>
     evt.preventDefault()
-    zoomVector = new THREE.Vector3 0, 0, this.ZOOMFACTOR * evt.deltaY
-    this.camera.position = this.camera.localToWorld zoomVector
+    console.log evt.deltaY
+    new_z = @camera.position.z + @ZOOMFACTOR * -evt.deltaY
+    @camera.position.z = if new_z >= @MIN_ZOOM then new_z else @MIN_ZOOM
 
   render: =>
     requestAnimationFrame this.render
-    this.renderer.render this.scene, this.camera
+    @renderer.render @scene, @camera
 
   add: (mesh) ->
-    this.scene.add mesh
+    @scene.add mesh
 
 module.NavigableScene = NavigableScene

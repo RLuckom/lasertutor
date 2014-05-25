@@ -21,7 +21,24 @@ class Axes
 
   addTo: (scene) ->
     scene.add @x_axis
+    scene.add(this.xLine(i)) for i in [-100..100] by 10
     scene.add @y_axis
+    scene.add(this.yLine(i)) for i in [-100..100] by 10
     scene.add @z_axis
+  
+  xLine: (yPos) ->
+    x_material = new THREE.LineBasicMaterial color: 0x0000ff
+    x_geometry = new THREE.Geometry()
+    x_geometry.vertices.push new THREE.Vector3 -100, yPos, 0
+    x_geometry.vertices.push new THREE.Vector3 100, yPos, 0
+    return new THREE.Line x_geometry, x_material
+  
+  yLine: (xPos) ->
+    y_material = new THREE.LineBasicMaterial color: 0x00ff00
+    y_geometry = new THREE.Geometry()
+    y_geometry.vertices.push new THREE.Vector3 xPos, -100, 0
+    y_geometry.vertices.push new THREE.Vector3 xPos, 100, 0
+    console.log 'yline', xPos
+    return new THREE.Line y_geometry, y_material
 
 module.Axes = Axes

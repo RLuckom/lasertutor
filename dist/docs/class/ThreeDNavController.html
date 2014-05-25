@@ -57,13 +57,51 @@ ensures that resizing the window or element doesn&#39;t mess up navigation.</p>
     <span class='signature'>
       <a href='#calculateRotationVector-dynamic'>
         #
-(THREE.Vector3)
+(object)
 <b>calculateRotationVector</b><span>(normalizedTravel, zoom, zeroZoomRotation = (Math.PI * 2), zoomFactor = 1)</span>
       </a>
     </span>
     <span class='desc'>
-      <p>Calculates how much along which (local) axes the view should rotate about the focal point, based on the number of widths / heights moved by the mouse
-and the zoom.</p>
+      Calculates how much pitch and yaw is called for, based on the number of widths / heights moved by the mouse and the zoom.
+
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clampAngle0_2PI-dynamic'>
+        #
+(void)
+<b>clampAngle0_2PI</b><span>(theta)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      sets angle to angle mod 2pi 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#mouseXYToCameraRotation-dynamic'>
+        #
+(void)
+<b>mouseXYToCameraRotation</b><span>(mouseDX, mouseDY, yaw, radiansPerFrameUnit)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      updates the rotation submatrix of the provided matrix based on mouse movement.
+
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#pitchRotationAxis-dynamic'>
+        #
+(void)
+<b>pitchRotationAxis</b><span>(yaw)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      As the yaw changes, so does the axis through the xy plane about which pitch should rotate.
+
     </span>
   </li>
 </ul>
@@ -142,14 +180,13 @@ Note that this function can return x and y values greater than 1.</p>
   <div class='method_details'>
     <p class='signature' id='calculateRotationVector-dynamic'>
       #
-(THREE.Vector3)
+(object)
 <b>calculateRotationVector</b><span>(normalizedTravel, zoom, zeroZoomRotation = (Math.PI * 2), zoomFactor = 1)</span>
       <br>
     </p>
     <div class='docstring'>
-  <p>Calculates how much along which (local) axes the view should rotate about
-the focal point, based on the number of widths / heights moved by the mouse
-and the zoom.</p>
+  <p>Calculates how much pitch and yaw is called for, based on the number of
+widths / heights moved by the mouse and the zoom.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -200,10 +237,118 @@ and the zoom.</p>
     <li>
       <span class='type'></span>
       (
-        <tt>THREE.Vector3</tt>
+        <tt>object</tt>
       )
       &mdash;
-      <span class='desc'>XYZ rotation vector. Z will always be 0. </span>
+      <span class='desc'>{pitch: Number, yaw: Number} </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clampAngle0_2PI-dynamic'>
+      #
+(void)
+<b>clampAngle0_2PI</b><span>(theta)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>sets angle to angle mod 2pi</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>theta</span>
+      <span class='type'>
+        (
+          <tt>Number</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>radians </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='mouseXYToCameraRotation-dynamic'>
+      #
+(void)
+<b>mouseXYToCameraRotation</b><span>(mouseDX, mouseDY, yaw, radiansPerFrameUnit)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>updates the rotation submatrix of the provided matrix based on mouse
+movement.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>mouseDX</span>
+      <span class='type'>
+        (
+          <tt>Number</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>normalized units </span>
+    </li>
+    <li>
+      <span class='name'>mouseDY</span>
+      <span class='type'>
+        (
+          <tt>Number</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>normalized units </span>
+    </li>
+    <li>
+      <span class='name'>yaw</span>
+      <span class='type'>
+        (
+          <tt>Number</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>radians </span>
+    </li>
+    <li>
+      <span class='name'>radiansPerFrameUnit</span>
+      <span class='type'>
+        (
+          <tt>Number</tt>
+        )
+      </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='pitchRotationAxis-dynamic'>
+      #
+(void)
+<b>pitchRotationAxis</b><span>(yaw)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>As the yaw changes, so does the axis through the xy plane about which pitch
+should rotate. This takes the yaw and returns that axis</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>yaw</span>
+      <span class='type'>
+        (
+          <tt>Number</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>radians. </span>
     </li>
   </ul>
 </div>
@@ -211,7 +356,7 @@ and the zoom.</p>
 </div>
     </div>
     <div id='footer'>
-  May 13, 14 22:50:55 by
+  May 25, 14 10:57:37 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>
