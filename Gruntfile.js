@@ -64,7 +64,8 @@ module.exports = function(grunt) {
 						       'coffee/NavigationUI.coffee',
 						       'coffee/NavigableScene.coffee',
 						       'coffee/Axes.coffee',
-						       'coffee/testHandleBars.coffee'
+						       'coffee/testHandleBars.coffee',
+						       'coffee/TFView.coffee'
 						      ],
 		    'test/js/test_compiled.js' : ['test/coffee/qunitExtensions.coffee',
 		                                  'test/coffee/testqunitExtensions.coffee',

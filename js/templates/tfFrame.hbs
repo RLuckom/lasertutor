@@ -1,7 +1,7 @@
 <div class="tf-grid">
     <div class="tf-grid-left">
 	<div class="grid-box-name">
-	    <div class="content"><b>Frame:</b> camera <b>Parent:</b> world</div>
+	    <div class="content"><b>Frame: </b>{{tf.name}} <b>Parent: </b>{{tf.parent}}</div>
 	</div>
 	<div class="grid-box-Vector3">
 	    <div class="grid-box-Vector3-text">
@@ -75,26 +75,26 @@
 	    <table class="matrix">
 		<tr>
 		    <td>{{tf.matrix.elements.[0]}}</td>
-		    <td>{{tf.matrix.elements.[1]}}</td>
-		    <td>{{tf.matrix.elements.[2]}}</td>
-		    <td>{{tf.matrix.elements.[3]}}</td>
-		</tr>
-		<tr>
 		    <td>{{tf.matrix.elements.[4]}}</td>
-		    <td>{{tf.matrix.elements.[5]}}</td>
-		    <td>{{tf.matrix.elements.[6]}}</td>
-		    <td>{{tf.matrix.elements.[7]}}</td>
-		</tr>
-		<tr>
 		    <td>{{tf.matrix.elements.[8]}}</td>
-		    <td>{{tf.matrix.elements.[9]}}</td>
-		    <td>{{tf.matrix.elements.[10]}}</td>
-		    <td>{{tf.matrix.elements.[11]}}</td>
+		    <td>{{tf.matrix.elements.[12]}}</td>
 		</tr>
 		<tr>
-		    <td>{{tf.matrix.elements.[12]}}</td>
+		    <td>{{tf.matrix.elements.[1]}}</td>
+		    <td>{{tf.matrix.elements.[5]}}</td>
+		    <td>{{tf.matrix.elements.[9]}}</td>
 		    <td>{{tf.matrix.elements.[13]}}</td>
+		</tr>
+		<tr>
+		    <td>{{tf.matrix.elements.[2]}}</td>
+		    <td>{{tf.matrix.elements.[6]}}</td>
+		    <td>{{tf.matrix.elements.[10]}}</td>
 		    <td>{{tf.matrix.elements.[14]}}</td>
+		</tr>
+		<tr>
+		    <td>{{tf.matrix.elements.[3]}}</td>
+		    <td>{{tf.matrix.elements.[7]}}</td>
+		    <td>{{tf.matrix.elements.[11]}}</td>
 		    <td>{{tf.matrix.elements.[15]}}</td>
 		</tr>
 	    </table>
@@ -106,26 +106,26 @@
 	    <table class="matrix">
 		<tr>
 		    <td>{{tf.matrixWorld.elements.[0]}}</td>
-		    <td>{{tf.matrixWorld.elements.[1]}}</td>
-		    <td>{{tf.matrixWorld.elements.[2]}}</td>
-		    <td>{{tf.matrixWorld.elements.[3]}}</td>
-		</tr>
-		<tr>
 		    <td>{{tf.matrixWorld.elements.[4]}}</td>
-		    <td>{{tf.matrixWorld.elements.[5]}}</td>
-		    <td>{{tf.matrixWorld.elements.[6]}}</td>
-		    <td>{{tf.matrixWorld.elements.[7]}}</td>
-		</tr>
-		<tr>
 		    <td>{{tf.matrixWorld.elements.[8]}}</td>
-		    <td>{{tf.matrixWorld.elements.[9]}}</td>
-		    <td>{{tf.matrixWorld.elements.[10]}}</td>
-		    <td>{{tf.matrixWorld.elements.[11]}}</td>
+		    <td>{{tf.matrixWorld.elements.[12]}}</td>
 		</tr>
 		<tr>
-		    <td>{{tf.matrixWorld.elements.[12]}}</td>
+		    <td>{{tf.matrixWorld.elements.[1]}}</td>
+		    <td>{{tf.matrixWorld.elements.[5]}}</td>
+		    <td>{{tf.matrixWorld.elements.[9]}}</td>
 		    <td>{{tf.matrixWorld.elements.[13]}}</td>
+		</tr>
+		<tr>
+		    <td>{{tf.matrixWorld.elements.[2]}}</td>
+		    <td>{{tf.matrixWorld.elements.[6]}}</td>
+		    <td>{{tf.matrixWorld.elements.[10]}}</td>
 		    <td>{{tf.matrixWorld.elements.[14]}}</td>
+		</tr>
+		<tr>
+		    <td>{{tf.matrixWorld.elements.[3]}}</td>
+		    <td>{{tf.matrixWorld.elements.[7]}}</td>
+		    <td>{{tf.matrixWorld.elements.[11]}}</td>
 		    <td>{{tf.matrixWorld.elements.[15]}}</td>
 		</tr>
 	    </table>

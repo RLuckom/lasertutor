@@ -1,5 +1,5 @@
 (function() {
-  var Axes, NavigableScene, NavigationUI, ThreeDNavController, exports, module, registerGlobal, testHandleBars,
+  var Axes, NavigableScene, NavigationUI, TFView, ThreeDNavController, exports, module, registerGlobal,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -172,6 +172,13 @@
         color: 0xffff00
       });
       this.focalPoint = new THREE.Mesh(cylGeom, cylMat);
+      this.view = new TFView({
+        model: this.focalPoint,
+        name: 'focalPoint',
+        parent: 'world'
+      });
+      this.view.render();
+      document.body.appendChild(this.view.el);
       this.scene.add(this.focalPoint);
       this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
       this.camera.position.z = 5;
@@ -243,7 +250,8 @@
       this.focalPoint.rotation.y += pitch_axis.y * (this.pitch - previous_pitch);
       this.focalPoint.rotation.z -= this.yaw - previous_yaw;
       rotation = this.controller.mouseXYToCameraRotation(mouseTravel.x, mouseTravel.y, this.yaw, this.RADIANS_PER_FRAME_UNIT);
-      return this.startPoint = xyPoint;
+      this.startPoint = xyPoint;
+      return this.view.render();
     };
 
     NavigableScene.prototype.mouseWheel = function(evt) {
@@ -337,33 +345,76 @@
 
   module.Axes = Axes;
 
-  testHandleBars = function() {
-    var context, template, testtf;
-    template = JST.tfFrame;
-    testtf = {
-      position: {
-        x: 1.0,
-        y: 2.0,
-        z: 3.0
-      },
-      rotation: {
-        x: 4.0,
-        y: 5.0,
-        z: 6.0
-      },
-      matrix: {
-        elements: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0]
-      },
-      matrixWorld: {
-        elements: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.3]
-      }
-    };
-    context = {
-      tf: testtf
-    };
-    return document.body.innerHTML += template(context);
-  };
+  TFView = (function(_super) {
+    __extends(TFView, _super);
 
-  module.testHandleBars = testHandleBars;
+    function TFView(context) {
+      this.render = __bind(this.render, this);
+      TFView.__super__.constructor.call(this, context);
+      this.name = context.name;
+      this.parent = context.parent;
+      this.template = JST.tfFrame;
+    }
+
+    TFView.prototype.render = function() {
+      return this.el.innerHTML = this.template({
+        tf: {
+          name: this.name,
+          parent: this.parent,
+          matrix: this.printableMatrix(this.model.matrix),
+          matrixWorld: this.printableMatrix(this.model.matrixWorld),
+          position: this.printablePosition(this.model.position),
+          rotation: this.printableRotation(this.model.rotation)
+        }
+      });
+    };
+
+    TFView.prototype.printableMatrix = function(matrix) {
+      var a, x;
+      a = (function() {
+        var _i, _len, _ref, _results;
+        _ref = matrix.elements;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          x = _ref[_i];
+          _results.push(x);
+        }
+        return _results;
+      })();
+      a = (function() {
+        var _i, _len, _results;
+        _results = [];
+        for (_i = 0, _len = a.length; _i < _len; _i++) {
+          x = a[_i];
+          _results.push(x.toFixed(4));
+        }
+        return _results;
+      })();
+      return {
+        elements: a
+      };
+    };
+
+    TFView.prototype.printableRotation = function(vec) {
+      return {
+        x: vec.x.toFixed(4),
+        y: vec.y.toFixed(4),
+        z: vec.z.toFixed(4)
+      };
+    };
+
+    TFView.prototype.printablePosition = function(vec) {
+      return {
+        x: vec.x.toPrecision(4),
+        y: vec.y.toPrecision(4),
+        z: vec.z.toPrecision(4)
+      };
+    };
+
+    return TFView;
+
+  })(Backbone.View);
+
+  module.TFView = TFView;
 
 }).call(this);

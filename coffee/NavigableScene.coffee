@@ -11,6 +11,9 @@ class NavigableScene extends NavigationUI
     cylGeom = new THREE.CylinderGeometry .4, .4, .2, 16
     cylMat = new THREE.MeshBasicMaterial color: 0xffff00
     @focalPoint = new THREE.Mesh cylGeom, cylMat
+    @view = new TFView model: @focalPoint, name: 'focalPoint', parent: 'world'
+    @view.render()
+    document.body.appendChild @view.el
     @scene.add @focalPoint
     @camera = new THREE.PerspectiveCamera 75, 1, 0.1, 1000
     @camera.position.z = 5
@@ -64,6 +67,7 @@ class NavigableScene extends NavigationUI
     )
     #@focalPoint.applyMatrix rotation
     @startPoint = xyPoint
+    @view.render()
 
   mouseWheel: (evt) =>
     evt.preventDefault()

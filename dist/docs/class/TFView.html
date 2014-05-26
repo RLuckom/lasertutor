@@ -15,34 +15,46 @@
       Index
     </a>
     &raquo;
-    <span class='title'>Axes</span>
+    <span class='title'>TFView</span>
   </div>
 </div>
     <div id='content'>
       <h1>
         Class:
-        Axes
+        TFView
       </h1>
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>coffee&#47;Axes.coffee</td>
+          <td>coffee&#47;TFView.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            Backbone.View
+          </td>
         </tr>
       </table>
-      <h2>Overview</h2>
-      <div class='docstring'>
-  <p>Draws 3D Axes in a scene so I can get my bearings</p>
-</div>
-<div class='tags'>
-</div>
       <h2>Instance Method Summary</h2>
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#addTo-dynamic'>
+      <a href='#render-dynamic'>
         #
 (void)
-<b>addTo</b><span>(scene)</span>
+<b>render</b><span>()</span>
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#printableMatrix-dynamic'>
+        #
+(void)
+<b>printableMatrix</b><span>(matrix)</span>
       </a>
     </span>
     <span class='desc'>
@@ -50,10 +62,10 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#xLine-dynamic'>
+      <a href='#printableRotation-dynamic'>
         #
 (void)
-<b>xLine</b><span>(yPos)</span>
+<b>printableRotation</b><span>(vec)</span>
       </a>
     </span>
     <span class='desc'>
@@ -61,10 +73,10 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#yLine-dynamic'>
+      <a href='#printablePosition-dynamic'>
         #
 (void)
-<b>yLine</b><span>(xPos)</span>
+<b>printablePosition</b><span>(vec)</span>
       </a>
     </span>
     <span class='desc'>
@@ -77,51 +89,47 @@
     <p class='signature' id='constructor-dynamic'>
       #
 (void)
-<b>constructor</b><span>()</span>
+<b>constructor</b><span>(context)</span>
       <br>
     </p>
-    <div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>scene</span>
-      <span class='type'>
-        (
-          <tt>THREE.Scene</tt>
-        )
-      </span>
-      &mdash;
-      <span class='desc'>scene in which to render the axes </span>
-    </li>
-  </ul>
-</div>
+    
   </div>
 </div>
       <h2>Instance Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='addTo-dynamic'>
+    <p class='signature' id='render-dynamic'>
       #
 (void)
-<b>addTo</b><span>(scene)</span>
+<b>render</b><span>()</span>
+      <span class='bound note'>Bound</span>
       <br>
     </p>
     
   </div>
   <div class='method_details'>
-    <p class='signature' id='xLine-dynamic'>
+    <p class='signature' id='printableMatrix-dynamic'>
       #
 (void)
-<b>xLine</b><span>(yPos)</span>
+<b>printableMatrix</b><span>(matrix)</span>
       <br>
     </p>
     
   </div>
   <div class='method_details'>
-    <p class='signature' id='yLine-dynamic'>
+    <p class='signature' id='printableRotation-dynamic'>
       #
 (void)
-<b>yLine</b><span>(xPos)</span>
+<b>printableRotation</b><span>(vec)</span>
+      <br>
+    </p>
+    
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='printablePosition-dynamic'>
+      #
+(void)
+<b>printablePosition</b><span>(vec)</span>
       <br>
     </p>
     
