@@ -1,131 +1,119 @@
-/* line 8, ../../sass/styles.scss */
+/* line 8, ../../scss/styles.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 12, ../../sass/styles.scss */
+/* line 12, ../../scss/styles.scss */
 body {
   font: 90% Helvetica, sans-serif;
   color: #333333;
 }
 
-/* line 17, ../../sass/styles.scss */
-.tf-grid {
+/* line 17, ../../scss/styles.scss */
+.Object3D-grid {
   margin: 10px;
   background: grey;
   padding: 5px 0 0 5px;
-  height: 150px;
-  width: 850px;
+  height: 140px;
+  width: 620px;
 }
-/* line 24, ../../sass/styles.scss */
-.tf-grid:after {
+/* line 24, ../../scss/styles.scss */
+.Object3D-grid:after {
   content: "";
   display: table;
   clear: both;
 }
+/* line 29, ../../scss/styles.scss */
+.Object3D-grid .title {
+  clear: both;
+  height: 30%;
+  padding: 0 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: white;
+}
+/* line 37, ../../scss/styles.scss */
+.Object3D-grid .left {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
 
-/* line 31, ../../sass/styles.scss */
+/* line 44, ../../scss/styles.scss */
 [class*='grid-box-'] {
   float: left;
   background: grey;
   padding-right: 5px;
   padding-bottom: 5px;
 }
-/* line 36, ../../sass/styles.scss */
-.grid [class*='grid-box-']:last-of-type {
-  padding-right: 0px;
-  padding-bottom: 0px;
-}
 
-/* line 42, ../../sass/styles.scss */
-.tf-grid-left {
-  float: left;
-  width: 40%;
-  height: 100%;
-}
-
-/* line 48, ../../sass/styles.scss */
-.tf-grid-right {
-  float: left;
-  width: 60%;
-  height: 100%;
-}
-
-/* line 54, ../../sass/styles.scss */
-.content {
-  height: 100%;
-  width: 100%;
-  padding: 5px;
-  background: white;
-}
-
-/* line 61, ../../sass/styles.scss */
-.grid-box-name {
-  width: 100%;
-  height: 20%;
-}
-
-/* line 66, ../../sass/styles.scss */
-.grid-box-Vector3 {
+/* line 51, ../../scss/styles.scss */
+.grid-box-Vector3, .grid-box-Euler {
   width: 50%;
-  height: 80%;
-  padding-bottom: 0px;
+  height: 70%;
 }
 
-/* line 72, ../../sass/styles.scss */
-.grid-box-Vector3-text {
-  width: 55%;
-  height: 33.333%;
+/* line 56, ../../scss/styles.scss */
+.grid-box-Matrix4 {
+  width: 35%;
+  height: 100%;
 }
 
-/* line 77, ../../sass/styles.scss */
-[class*='text'] {
+/* line 61, ../../scss/styles.scss */
+.Vector3, .Matrix4, .Euler {
+  background: white;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+}
+/* line 66, ../../scss/styles.scss */
+.Vector3 .name, .Matrix4 .name, .Euler .name {
   font-weight: bold;
 }
-
-/* line 81, ../../sass/styles.scss */
-.grid-box-Vector3-data {
-  padding-right: 0px;
-  width: 45%;
-  height: 33.3333%;
+/* line 68, ../../scss/styles.scss */
+.Vector3 .name:after, .Matrix4 .name:after, .Euler .name:after {
+  content: ":";
 }
 
-/* line 87, ../../sass/styles.scss */
-.grid-box-Matrix4 {
-  width: 50%;
-  height: 100%;
+/* line 72, ../../scss/styles.scss */
+.Vector3-element, .Euler-element {
+  padding-left: 9px;
+  font-size: small;
+  height: 33.33333%;
+}
+/* line 76, ../../scss/styles.scss */
+.Vector3-element:first-of-type, .Euler-element:first-of-type {
+  padding-top: 2px;
 }
 
-/* line 92, ../../sass/styles.scss */
+/* line 79, ../../scss/styles.scss */
 .matrix {
   margin: 5px auto;
   font-size: small;
   text-align: center;
   position: relative;
 }
-
-/* line 99, ../../sass/styles.scss */
+/* line 84, ../../scss/styles.scss */
 .matrix:before {
   content: "";
   position: absolute;
   left: -6px;
-  top: 0px;
+  top: 5%;
   border: 1px solid #000;
   border-right: 0px;
   width: 6px;
-  height: 100%;
+  height: 90%;
 }
-
-/* line 110, ../../sass/styles.scss */
+/* line 94, ../../scss/styles.scss */
 .matrix:after {
   content: "";
   position: absolute;
   right: -6px;
-  top: 0px;
+  top: 5%;
   border: 1px solid #000;
   border-left: 0px;
   width: 6px;
-  height: 100%;
+  height: 90%;
 }

@@ -1,95 +1,158 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["tfFrame"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["JST"]["Euler"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
-  buffer += "<div class=\"tf-grid\">\n    <div class=\"tf-grid-left\">\n	<div class=\"grid-box-name\">\n	    <div class=\"content\"><b>Frame: </b>"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " <b>Parent: </b>"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.parent)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</div>\n	</div>\n	<div class=\"grid-box-Vector3\">\n	    <div class=\"grid-box-Vector3-text\">\n		<div class=\"content\">\n		position.x\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-data\">\n		<div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.position)),stack1 == null || stack1 === false ? stack1 : stack1.x)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-text\">\n		<div class=\"content\">\n		position.y\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-data\">\n		<div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.position)),stack1 == null || stack1 === false ? stack1 : stack1.y)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-text\">\n		<div class=\"content\">\n		position.z\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-data\">\n		<div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.position)),stack1 == null || stack1 === false ? stack1 : stack1.z)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n		</div>\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3\">\n	<div class=\"grid-box-Vector3-text\">\n	    <div class=\"content\">\n	    rotation.x\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-data\">\n	    <div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.rotation)),stack1 == null || stack1 === false ? stack1 : stack1.x)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-text\">\n	    <div class=\"content\">\n	    rotation.y\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-data\">\n	    <div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.rotation)),stack1 == null || stack1 === false ? stack1 : stack1.y)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-text\">\n	    <div class=\"content\">\n	    rotation.z\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-data\">\n	    <div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.rotation)),stack1 == null || stack1 === false ? stack1 : stack1.z)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n	    </div>\n	</div>\n    </div>\n</div>\n<div class=\"tf-grid-right\">\n    <div class=\"grid-box-Matrix4\">\n	<div class=\"content\">\n	    <div class=\"Matrix4-text\">.matrix</div>\n	    <table class=\"matrix\">\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[0])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[4])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[8])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[12])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[1])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[5])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[9])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[13])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[2])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[6])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[10])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[14])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[3])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[7])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[11])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[15])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n	    </table>\n	</div>\n    </div>\n    <div class=\"grid-box-Matrix4\">\n	<div class=\"content\">\n	    <div class=\"Matrix4-text\">.matrixWorld</div>\n	    <table class=\"matrix\">\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[0])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[4])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[8])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[12])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[1])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[5])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[9])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[13])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[2])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[6])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[10])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[14])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[3])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[7])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[11])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[15])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n	    </table>\n	</div>\n    </div>\n</div>\n</div>\n";
+  buffer += "<div class=\"Euler\">\n    <span class=\"name\">";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n    <div class=\"Euler-element\">\n        <span class=\"Euler-label\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0._order)),stack1 == null || stack1 === false ? stack1 : stack1[0])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ":</span>\n        <span class=\"Euler-data\">"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0._x), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0._x), options)))
+    + "</span>\n    </div>\n    <div class=\"Euler-element\">\n        <span class=\"Euler-label\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0._order)),stack1 == null || stack1 === false ? stack1 : stack1[1])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ":</span>\n        <span class=\"Euler-data\">"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0._z), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0._z), options)))
+    + "</span>\n    </div>\n    <div class=\"Euler-element\">\n        <span class=\"Euler-label\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0._order)),stack1 == null || stack1 === false ? stack1 : stack1[2])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ":</span>\n        <span class=\"Euler-data\">"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0._z), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0._z), options)))
+    + "</span>\n    </div>\n</div>\n\n";
+  return buffer;
+  });
+
+this["JST"]["Matrix4"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function", self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", helper, options;
+  buffer += "\n        <tr>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[0]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[0]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[4]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[4]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[8]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[8]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[12]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[12]), options)))
+    + "</td>\n        </tr>\n        <tr>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[1]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[1]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[5]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[5]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[9]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[9]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[13]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[13]), options)))
+    + "</td>\n        </tr>\n        <tr>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[2]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[2]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[6]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[6]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[10]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[10]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[14]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[14]), options)))
+    + "</td>\n        </tr>\n        <tr>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[3]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[3]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[7]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[7]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[11]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[11]), options)))
+    + "</td>\n            <td>"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0[15]), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0[15]), options)))
+    + "</td>\n        </tr>\n        ";
+  return buffer;
+  }
+
+  buffer += "<div class=\"Matrix4\">\n    <span class=\"name\">";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n    <table class=\"matrix\">\n        ";
+  stack1 = helpers['with'].call(depth0, (depth0 && depth0.elements), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </table>\n</div>\n";
+  return buffer;
+  });
+
+this["JST"]["Object3D"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n            <span class=\"name\">";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n            ";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  
+  return "\n            <span class=\"name\">Object3D</span>\n            ";
+  }
+
+  buffer += "<div class=\"Object3D-grid\">\n    <div class=\"left\">\n        <div class=\"title\">\n            ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.name), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            ";
+  stack1 = helpers.unless.call(depth0, (depth0 && depth0.name), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            <br /><span class=\"parent\">Parent: ";
+  if (helper = helpers.parent) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.parent); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n        </div>\n        <div class=\"vectors\">\n            <div class=\"grid-box-Vector3\">\n                ";
+  if (helper = helpers.position) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.position); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            </div>\n            <div class=\"grid-box-Euler\">\n                ";
+  if (helper = helpers.rotation) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.rotation); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            </div>\n        </div>\n    </div>\n    <div class=\"grid-box-Matrix4\">\n        ";
+  if (helper = helpers.matrix) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.matrix); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </div>\n    <div class=\"grid-box-Matrix4\">\n        ";
+  if (helper = helpers.matrixWorld) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.matrixWorld); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </div>\n</div>\n";
+  return buffer;
+  });
+
+this["JST"]["Vector3"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+
+
+  buffer += "<div class=\"Vector3\">\n    <span class=\"name\">";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n    <div class=\"Vector3-element\">\n        <span class=\"Vector3-label\">X:</span>\n        <span class=\"Vector3-data\">"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0.x), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0.x), options)))
+    + "</span>\n    </div>\n    <div class=\"Vector3-element\">\n        <span class=\"Vector3-label\">Y:</span>\n        <span class=\"Vector3-data\">"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0.y), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0.y), options)))
+    + "</span>\n    </div>\n    <div class=\"Vector3-element\">\n        <span class=\"Vector3-label\">Z:</span>\n        <span class=\"Vector3-data\">"
+    + escapeExpression((helper = helpers.sig || (depth0 && depth0.sig),options={hash:{},data:data},helper ? helper.call(depth0, 4, (depth0 && depth0.z), options) : helperMissing.call(depth0, "sig", 4, (depth0 && depth0.z), options)))
+    + "</span>\n    </div>\n</div>\n";
   return buffer;
   });;(function() {
-  var Axes, NavigableScene, NavigationUI, TFView, ThreeDNavController, exports, module, registerGlobal,
+  var Axes, NavigableScene, NavigationUI, Object3DView, ThreeDNavController, exports, floatFormat, module, registerGlobal,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -244,7 +307,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     function NavigableScene(element) {
       var cylGeom, cylMat;
       this.element = element;
-      this.render = __bind(this.render, this);
+      this.renderTHREE = __bind(this.renderTHREE, this);
       this.mouseWheel = __bind(this.mouseWheel, this);
       this.revolveCamera = __bind(this.revolveCamera, this);
       this.mouseMove = __bind(this.mouseMove, this);
@@ -262,7 +325,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         color: 0xffff00
       });
       this.focalPoint = new THREE.Mesh(cylGeom, cylMat);
-      this.view = new TFView({
+      this.view = new Object3DView({
         model: this.focalPoint,
         name: 'focalPoint',
         parent: 'world'
@@ -352,8 +415,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       return this.camera.position.z = new_z >= this.MIN_ZOOM ? new_z : this.MIN_ZOOM;
     };
 
-    NavigableScene.prototype.render = function() {
-      requestAnimationFrame(this.render);
+    NavigableScene.prototype.renderTHREE = function() {
+      requestAnimationFrame(this.renderTHREE);
       return this.renderer.render(this.scene, this.camera);
     };
 
@@ -435,167 +498,42 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
   module.Axes = Axes;
 
-  TFView = (function(_super) {
-    __extends(TFView, _super);
+  Object3DView = (function(_super) {
+    __extends(Object3DView, _super);
 
-    function TFView(context) {
+    function Object3DView(context) {
       this.render = __bind(this.render, this);
-      TFView.__super__.constructor.call(this, context);
+      Object3DView.__super__.constructor.call(this, context);
       this.name = context.name;
       this.parent = context.parent;
-      this.template = JST.tfFrame;
+      this.template = JST.Object3D;
+      this.model.position.name = 'Position';
+      this.model.rotation.name = 'Rotation';
+      this.model.matrix.name = '.matrix';
+      this.model.matrixWorld.name = '.matrixWorld';
     }
 
-    TFView.prototype.render = function() {
+    Object3DView.prototype.render = function() {
       return this.el.innerHTML = this.template({
-        tf: {
-          name: this.name,
-          parent: this.parent,
-          matrix: this.printableMatrix(this.model.matrix),
-          matrixWorld: this.printableMatrix(this.model.matrixWorld),
-          position: this.printablePosition(this.model.position),
-          rotation: this.printableRotation(this.model.rotation)
-        }
+        name: this.name,
+        parent: this.parent,
+        matrix: JST.Matrix4(this.model.matrix),
+        matrixWorld: JST.Matrix4(this.model.matrixWorld),
+        position: JST.Vector3(this.model.position),
+        rotation: JST.Euler(this.model.rotation)
       });
     };
 
-    TFView.prototype.printableMatrix = function(matrix) {
-      var a, x;
-      a = (function() {
-        var _i, _len, _ref, _results;
-        _ref = matrix.elements;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          x = _ref[_i];
-          _results.push(x);
-        }
-        return _results;
-      })();
-      a = (function() {
-        var _i, _len, _results;
-        _results = [];
-        for (_i = 0, _len = a.length; _i < _len; _i++) {
-          x = a[_i];
-          _results.push(x.toFixed(4));
-        }
-        return _results;
-      })();
-      return {
-        elements: a
-      };
-    };
-
-    TFView.prototype.printableRotation = function(vec) {
-      return {
-        x: vec.x.toFixed(4),
-        y: vec.y.toFixed(4),
-        z: vec.z.toFixed(4)
-      };
-    };
-
-    TFView.prototype.printablePosition = function(vec) {
-      return {
-        x: vec.x.toPrecision(4),
-        y: vec.y.toPrecision(4),
-        z: vec.z.toPrecision(4)
-      };
-    };
-
-    return TFView;
+    return Object3DView;
 
   })(Backbone.View);
 
-  module.TFView = TFView;
+  module.Object3DView = Object3DView;
+
+  floatFormat = function(numDigits, n) {
+    return n.toFixed(numDigits);
+  };
+
+  Handlebars.registerHelper('sig', floatFormat);
 
 }).call(this);
-;this["JST"] = this["JST"] || {};
-
-this["JST"]["tfFrame"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
-
-
-  buffer += "<div class=\"tf-grid\">\n    <div class=\"tf-grid-left\">\n	<div class=\"grid-box-name\">\n	    <div class=\"content\"><b>Frame: </b>"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " <b>Parent: </b>"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.parent)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</div>\n	</div>\n	<div class=\"grid-box-Vector3\">\n	    <div class=\"grid-box-Vector3-text\">\n		<div class=\"content\">\n		position.x\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-data\">\n		<div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.position)),stack1 == null || stack1 === false ? stack1 : stack1.x)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-text\">\n		<div class=\"content\">\n		position.y\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-data\">\n		<div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.position)),stack1 == null || stack1 === false ? stack1 : stack1.y)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-text\">\n		<div class=\"content\">\n		position.z\n		</div>\n	    </div>\n	    <div class=\"grid-box-Vector3-data\">\n		<div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.position)),stack1 == null || stack1 === false ? stack1 : stack1.z)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n		</div>\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3\">\n	<div class=\"grid-box-Vector3-text\">\n	    <div class=\"content\">\n	    rotation.x\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-data\">\n	    <div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.rotation)),stack1 == null || stack1 === false ? stack1 : stack1.x)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-text\">\n	    <div class=\"content\">\n	    rotation.y\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-data\">\n	    <div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.rotation)),stack1 == null || stack1 === false ? stack1 : stack1.y)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-text\">\n	    <div class=\"content\">\n	    rotation.z\n	    </div>\n	</div>\n	<div class=\"grid-box-Vector3-data\">\n	    <div class=\"content\">\n		"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.rotation)),stack1 == null || stack1 === false ? stack1 : stack1.z)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n	    </div>\n	</div>\n    </div>\n</div>\n<div class=\"tf-grid-right\">\n    <div class=\"grid-box-Matrix4\">\n	<div class=\"content\">\n	    <div class=\"Matrix4-text\">.matrix</div>\n	    <table class=\"matrix\">\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[0])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[4])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[8])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[12])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[1])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[5])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[9])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[13])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[2])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[6])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[10])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[14])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[3])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[7])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[11])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrix)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[15])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n	    </table>\n	</div>\n    </div>\n    <div class=\"grid-box-Matrix4\">\n	<div class=\"content\">\n	    <div class=\"Matrix4-text\">.matrixWorld</div>\n	    <table class=\"matrix\">\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[0])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[4])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[8])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[12])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[1])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[5])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[9])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[13])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[2])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[6])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[10])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[14])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n		<tr>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[3])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[7])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[11])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		    <td>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.tf)),stack1 == null || stack1 === false ? stack1 : stack1.matrixWorld)),stack1 == null || stack1 === false ? stack1 : stack1.elements)),stack1 == null || stack1 === false ? stack1 : stack1[15])),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</td>\n		</tr>\n	    </table>\n	</div>\n    </div>\n</div>\n</div>\n";
-  return buffer;
-  });
