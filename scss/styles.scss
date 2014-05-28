@@ -1,0 +1,104 @@
+@import "compass";
+@import "compass/css3";
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$pad: 5px;
+$margin: 10px;
+
+* {
+  @include box-sizing(border-box);
+}
+
+body {
+ font: 90% $font-stack;
+ color: $primary-color;
+}
+
+.Object3D-grid {
+  margin: $margin;
+  background: grey;
+  padding: $pad 0 0 $pad;
+  height: 140px;
+  width: 620px;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  & .title {
+    clear: both;
+    height: 30%;
+    padding: 0 $pad;
+    margin-bottom: $pad;
+    margin-right: $pad;
+    background: white;
+  }
+  & .left {
+    float: left;
+    width: 30%;
+    height: 100%;
+  }
+}
+
+[class*='grid-box-'] {
+  float: left;
+  background: grey;
+  padding-right: $pad;
+  padding-bottom: $pad;
+}
+
+.grid-box-Vector3, .grid-box-Euler {
+  width: 50%;
+  height: 70%;
+}
+
+.grid-box-Matrix4 {
+  width: 35%;
+  height: 100%;
+}
+
+.Vector3, .Matrix4, .Euler {
+  background: white;
+  padding: $pad;
+  height: 100%;
+  width: 100%;
+  & .name {
+    font-weight: bold;
+    &:after{content: ":";}
+  }
+}
+
+.Vector3-element, .Euler-element {
+  padding-left: 9px;
+  font-size: small;
+  height: 33.33333%;
+  &:first-of-type{padding-top:2px;}
+}
+
+.matrix {
+  margin: $pad auto; 
+  font-size: small;
+  text-align: center;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 5%;
+    border: 1px solid #000;
+    border-right: 0px;
+    width: 6px;
+    height: 90%;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: 5%;
+    border: 1px solid #000;
+    border-left: 0px;
+    width: 6px;
+    height: 90%;
+  }
+}

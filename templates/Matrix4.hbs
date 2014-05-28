@@ -1,0 +1,31 @@
+<div class="Matrix4">
+    <span class="name">{{name}}</span>
+    <table class="matrix">
+        {{#with elements}}
+        <tr>
+            <td>{{sig 4 [0]}}</td>
+            <td>{{sig 4 [4]}}</td>
+            <td>{{sig 4 [8]}}</td>
+            <td>{{sig 4 [12]}}</td>
+        </tr>
+        <tr>
+            <td>{{sig 4 [1]}}</td>
+            <td>{{sig 4 [5]}}</td>
+            <td>{{sig 4 [9]}}</td>
+            <td>{{sig 4 [13]}}</td>
+        </tr>
+        <tr>
+            <td>{{sig 4 [2]}}</td>
+            <td>{{sig 4 [6]}}</td>
+            <td>{{sig 4 [10]}}</td>
+            <td>{{sig 4 [14]}}</td>
+        </tr>
+        <tr>
+            <td>{{sig 4 [3]}}</td>
+            <td>{{sig 4 [7]}}</td>
+            <td>{{sig 4 [11]}}</td>
+            <td>{{sig 4 [15]}}</td>
+        </tr>
+        {{/with}}
+    </table>
+</div>

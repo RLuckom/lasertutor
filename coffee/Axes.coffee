@@ -19,6 +19,9 @@ class Axes
     z_geometry.vertices.push new THREE.Vector3 0, 0, 100
     @z_axis = new THREE.Line z_geometry, z_material
 
+  # Adds the axes to scene
+  #
+  # @param [THREE.Scene] scene scene in which to render the axes
   addTo: (scene) ->
     scene.add @x_axis
     scene.add(this.xLine(i)) for i in [-100..100] by 10
@@ -26,6 +29,10 @@ class Axes
     scene.add(this.yLine(i)) for i in [-100..100] by 10
     scene.add @z_axis
   
+  # Convenience method for generating a line parallel to the x-axis
+  # at y = yPos, z = 0
+  #
+  # @param [Number] yPos
   xLine: (yPos) ->
     x_material = new THREE.LineBasicMaterial color: 0x0000ff
     x_geometry = new THREE.Geometry()
@@ -33,6 +40,10 @@ class Axes
     x_geometry.vertices.push new THREE.Vector3 100, yPos, 0
     return new THREE.Line x_geometry, x_material
   
+  # Convenience method for generating a line parallel to the y-axis
+  # at x = xPos, z = 0
+  #
+  # @param [Number] xPos
   yLine: (xPos) ->
     y_material = new THREE.LineBasicMaterial color: 0x00ff00
     y_geometry = new THREE.Geometry()

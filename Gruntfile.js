@@ -4,9 +4,10 @@ module.exports = function(grunt) {
         
         codo: {
                 options: {
+		    undocumented: true, 
 		    title: "<%= pkg.name %>",
                     output: "dist/docs",
-                    inputs: ["coffee"]
+                    inputs: ["coffee", "test/coffee/qunitExtensions.coffee"]
 	          }
 	},
 
@@ -65,7 +66,9 @@ module.exports = function(grunt) {
 						       'coffee/NavigableScene.coffee',
 						       'coffee/Axes.coffee',
 						       'coffee/testHandleBars.coffee',
-						       'coffee/TFView.coffee'
+						       'coffee/TFView.coffee',
+						       'coffee/Object3DView.coffee', 
+						       './coffee/HandlebarsHelpers.coffee',
 						      ],
 		    'test/js/test_compiled.js' : ['test/coffee/qunitExtensions.coffee',
 		                                  'test/coffee/testqunitExtensions.coffee',
@@ -79,7 +82,7 @@ module.exports = function(grunt) {
             dist: {
 		options: {
                     cssDir: 'dist/css/',
-		    sassDir: 'sass/'
+		    sassDir: 'scss/'
                     }
 	    }
         },
@@ -92,7 +95,7 @@ module.exports = function(grunt) {
 		   }
 		 },
 		 files: {
-		    "js/templates/<%= pkg.name %>-handlebars-compiled.js": "js/templates/*.hbs"
+		   "js/<%= pkg.name %>-handlebars-compiled.js": "templates/*.hbs"
 		 }
 	    }
 	},
@@ -100,16 +103,20 @@ module.exports = function(grunt) {
 
         watch: {
             css: {
-                files: 'sass/*.scss',
+                files: 'scss/*.scss',
                 tasks: ['compass']
             },
             coffee: {
                 files: ['coffee/**/*.coffee', 'test/coffee/**/*.coffee'],
                 tasks: ['coffee', 'codo']
             },
+	    handlebars: {
+	        files: ['templates/*.hbs'],
+		tasks: ['handlebars']
+		},
             js: {
-                files: ['js/**/*.js', 'test/**/*.js', 'js/templates/*.hbs'],
-                tasks: ['handlebars', 'jshint', 'concat', 'uglify', 'qunit']
+                files: ['js/**/*.js', 'test/**/*.js'],
+                tasks: ['jshint', 'concat', 'uglify', 'qunit']
             }
         }
     });

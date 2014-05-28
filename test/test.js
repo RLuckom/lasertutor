@@ -1,63 +1,71 @@
 (function() {
-  QUnit.extend(QUnit, {
-    almostEqual: function(actual, expected, epsilon, message) {
-      if (message == null) {
-        message = "expected: " + expected + "  got: " + actual;
-      }
-      return QUnit.push((Math.abs(actual - expected) <= epsilon) || (actual === expected), actual, expected, message);
-    },
-    matrixEqual: function(actual, expected, epsilon) {
-      var actualString, e, el, expectedString, i, m, message, _i, _j, _k, _len, _len1, _len2, _results;
-      actual = actual.elements;
-      expected = expected.elements;
-      ok(actual.length === expected.length, "matrices are different sizes");
-      expectedString = '';
-      for (_i = 0, _len = expected.length; _i < _len; _i++) {
-        e = expected[_i];
-        expectedString += "" + e + ", ";
-      }
-      actualString = '';
-      for (_j = 0, _len1 = actual.length; _j < _len1; _j++) {
-        e = actual[_j];
-        actualString += "" + e + ", ";
-      }
-      message = "expected: " + expectedString + " got: " + actualString;
-      m = function(i) {
-        return "Element " + i + " not equal:\nExpected has " + expected[i] + "\n Actual has " + actual[i] + "\nExpected: " + expectedString + "\n Actual:" + actualString;
-      };
-      _results = [];
-      for (i = _k = 0, _len2 = actual.length; _k < _len2; i = ++_k) {
-        el = actual[i];
-        _results.push(QUnit.almostEqual(el, expected[i], epsilon, m(i)));
-      }
-      return _results;
-    },
-    vectorEquals: function(actual, expected, epsilon) {
-      var actualString, e, el, expectedString, i, m, message, _i, _j, _k, _len, _len1, _len2, _results;
-      actual = actual.toArray();
-      expected = expected.toArray();
-      ok(actual.length === expected.length, "matrices are different sizes");
-      expectedString = '';
-      for (_i = 0, _len = expected.length; _i < _len; _i++) {
-        e = expected[_i];
-        expectedString += "" + e + ", ";
-      }
-      actualString = '';
-      for (_j = 0, _len1 = actual.length; _j < _len1; _j++) {
-        e = actual[_j];
-        actualString += "" + e + ", ";
-      }
-      message = "expected: " + expectedString + " got: " + actualString;
-      m = function(i) {
-        return "Element " + i + " not equal:\nExpected has " + expected[i] + "\n Actual has " + actual[i] + "\nExpected: " + expectedString + "\n Actual:" + actualString;
-      };
-      _results = [];
-      for (i = _k = 0, _len2 = actual.length; _k < _len2; i = ++_k) {
-        el = actual[i];
-        _results.push(QUnit.almostEqual(el, expected[i], epsilon, m(i)));
-      }
-      return _results;
+  var almostEqual, matrixEqual, vectorEquals;
+
+  almostEqual = function(actual, expected, epsilon, message) {
+    if (message == null) {
+      message = "expected: " + expected + "  got: " + actual;
     }
+    return QUnit.push((Math.abs(actual - expected) <= epsilon) || (actual === expected), actual, expected, message);
+  };
+
+  matrixEqual = function(actual, expected, epsilon) {
+    var actualString, e, el, expectedString, i, m, message, _i, _j, _k, _len, _len1, _len2, _results;
+    actual = actual.elements;
+    expected = expected.elements;
+    ok(actual.length === expected.length, "matrices are different sizes");
+    expectedString = '';
+    for (_i = 0, _len = expected.length; _i < _len; _i++) {
+      e = expected[_i];
+      expectedString += "" + e + ", ";
+    }
+    actualString = '';
+    for (_j = 0, _len1 = actual.length; _j < _len1; _j++) {
+      e = actual[_j];
+      actualString += "" + e + ", ";
+    }
+    message = "expected: " + expectedString + " got: " + actualString;
+    m = function(i) {
+      return "Element " + i + " not equal:\nExpected has " + expected[i] + "\n Actual has " + actual[i] + "\nExpected: " + expectedString + "\n Actual:" + actualString;
+    };
+    _results = [];
+    for (i = _k = 0, _len2 = actual.length; _k < _len2; i = ++_k) {
+      el = actual[i];
+      _results.push(QUnit.almostEqual(el, expected[i], epsilon, m(i)));
+    }
+    return _results;
+  };
+
+  vectorEquals = function(actual, expected, epsilon) {
+    var actualString, e, el, expectedString, i, m, message, _i, _j, _k, _len, _len1, _len2, _results;
+    actual = actual.toArray();
+    expected = expected.toArray();
+    ok(actual.length === expected.length, "matrices are different sizes");
+    expectedString = '';
+    for (_i = 0, _len = expected.length; _i < _len; _i++) {
+      e = expected[_i];
+      expectedString += "" + e + ", ";
+    }
+    actualString = '';
+    for (_j = 0, _len1 = actual.length; _j < _len1; _j++) {
+      e = actual[_j];
+      actualString += "" + e + ", ";
+    }
+    message = "expected: " + expectedString + " got: " + actualString;
+    m = function(i) {
+      return "Element " + i + " not equal:\nExpected has " + expected[i] + "\n Actual has " + actual[i] + "\nExpected: " + expectedString + "\n Actual:" + actualString;
+    };
+    _results = [];
+    for (i = _k = 0, _len2 = actual.length; _k < _len2; i = ++_k) {
+      el = actual[i];
+      _results.push(QUnit.almostEqual(el, expected[i], epsilon, m(i)));
+    }
+    return _results;
+  };
+
+  QUnit.extend(QUnit, {
+    'almostEqual': almostEqual,
+    'matrixEqual': matrixEqual,
+    'vectorEquals': vectorEquals
   });
 
   test("testQUnitExtensions testAlmostEqual", function() {

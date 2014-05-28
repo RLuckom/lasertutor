@@ -1,0 +1,27 @@
+<div class="Object3D-grid">
+    <div class="left">
+        <div class="title">
+            {{#if name}}
+            <span class="name">{{name}}</span>
+            {{/if}}
+            {{#unless name}}
+            <span class="name">Object3D</span>
+            {{/unless}}
+            <br /><span class="parent">Parent: {{parent}}</span>
+        </div>
+        <div class="vectors">
+            <div class="grid-box-Vector3">
+                {{{position}}}
+            </div>
+            <div class="grid-box-Euler">
+                {{{rotation}}}
+            </div>
+        </div>
+    </div>
+    <div class="grid-box-Matrix4">
+        {{{matrix}}}
+    </div>
+    <div class="grid-box-Matrix4">
+        {{{matrixWorld}}}
+    </div>
+</div>
