@@ -38,6 +38,10 @@ body {
     float: left;
     width: 30%;
     height: 100%;
+
+    & .vectors {
+      height: 65%;
+    }
   }
 }
 
@@ -50,7 +54,7 @@ body {
 
 .grid-box-Vector3, .grid-box-Euler {
   width: 50%;
-  height: 70%;
+  height: 100%;
 }
 
 .grid-box-Matrix4 {
@@ -72,7 +76,6 @@ body {
 .Vector3-element, .Euler-element {
   padding-left: 9px;
   font-size: small;
-  height: 33.33333%;
   &:first-of-type{padding-top:2px;}
 }
 

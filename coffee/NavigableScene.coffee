@@ -71,8 +71,6 @@ class NavigableScene extends NavigationUI
   revolveCamera: (xyPoint) =>
     previous_pitch = @pitch
     previous_yaw = @yaw
-    console.log @startPoint.toSource(), xyPoint.toSource()
-    console.log @camera.position.toSource()
     mouseTravel = @controller.normalizeMouseTravel(
       @element.offsetWidth, @element.offsetHeight, this.startPoint, xyPoint
     )
@@ -83,7 +81,6 @@ class NavigableScene extends NavigationUI
     @pitch += @RADIANS_PER_FRAME_UNIT * mouseTravel.y
     @pitch = if @pitch > Math.PI then Math.PI else @pitch
     @pitch = if @pitch < 0 then 0 else @pitch
-    console.log @yaw, @pitch, pitch_axis.toSource()
     @focalPoint.rotation.x += pitch_axis.x * (@pitch - previous_pitch)
     @focalPoint.rotation.y += pitch_axis.y * (@pitch - previous_pitch)
     @focalPoint.rotation.z -= @yaw - previous_yaw
@@ -99,7 +96,6 @@ class NavigableScene extends NavigationUI
   # @param [onmousewheel Event] evt
   mouseWheel: (evt) =>
     evt.preventDefault()
-    console.log evt.deltaY
     new_z = @camera.position.z + @ZOOMFACTOR * -evt.deltaY
     @camera.position.z = if new_z >= @MIN_ZOOM then new_z else @MIN_ZOOM
 

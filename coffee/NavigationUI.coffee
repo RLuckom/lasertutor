@@ -40,7 +40,6 @@ class NavigationUI
   #
   # @param [Event] evt
   mouseWheel: (evt) ->
-    console.log evt.deltaX + ' ' + evt.deltaY + ' ' + evt.deltaZ
 
   # mouseup event callback. Sets this.interacting to false
   #

@@ -260,9 +260,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       return this.startPoint = this.getMouseXY(evt);
     };
 
-    NavigationUI.prototype.mouseWheel = function(evt) {
-      return console.log(evt.deltaX + ' ' + evt.deltaY + ' ' + evt.deltaZ);
-    };
+    NavigationUI.prototype.mouseWheel = function(evt) {};
 
     NavigationUI.prototype.mouseUp = function(evt) {
       return this.interacting = false;
@@ -390,15 +388,12 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       var mouseTravel, pitch_axis, previous_pitch, previous_yaw, rotation;
       previous_pitch = this.pitch;
       previous_yaw = this.yaw;
-      console.log(this.startPoint.toSource(), xyPoint.toSource());
-      console.log(this.camera.position.toSource());
       mouseTravel = this.controller.normalizeMouseTravel(this.element.offsetWidth, this.element.offsetHeight, this.startPoint, xyPoint);
       pitch_axis = this.controller.pitchRotationAxis(this.yaw);
       this.yaw = this.controller.clampAngle0_2PI(this.yaw + this.RADIANS_PER_FRAME_UNIT * mouseTravel.x);
       this.pitch += this.RADIANS_PER_FRAME_UNIT * mouseTravel.y;
       this.pitch = this.pitch > Math.PI ? Math.PI : this.pitch;
       this.pitch = this.pitch < 0 ? 0 : this.pitch;
-      console.log(this.yaw, this.pitch, pitch_axis.toSource());
       this.focalPoint.rotation.x += pitch_axis.x * (this.pitch - previous_pitch);
       this.focalPoint.rotation.y += pitch_axis.y * (this.pitch - previous_pitch);
       this.focalPoint.rotation.z -= this.yaw - previous_yaw;
@@ -410,7 +405,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     NavigableScene.prototype.mouseWheel = function(evt) {
       var new_z;
       evt.preventDefault();
-      console.log(evt.deltaY);
       new_z = this.camera.position.z + this.ZOOMFACTOR * -evt.deltaY;
       return this.camera.position.z = new_z >= this.MIN_ZOOM ? new_z : this.MIN_ZOOM;
     };
@@ -488,7 +482,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       y_geometry = new THREE.Geometry();
       y_geometry.vertices.push(new THREE.Vector3(xPos, -100, 0));
       y_geometry.vertices.push(new THREE.Vector3(xPos, 100, 0));
-      console.log('yline', xPos);
       return new THREE.Line(y_geometry, y_material);
     };
 

@@ -49,7 +49,6 @@ class Axes
     y_geometry = new THREE.Geometry()
     y_geometry.vertices.push new THREE.Vector3 xPos, -100, 0
     y_geometry.vertices.push new THREE.Vector3 xPos, 100, 0
-    console.log 'yline', xPos
     return new THREE.Line y_geometry, y_material
 
 module.Axes = Axes
