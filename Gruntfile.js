@@ -68,6 +68,7 @@ module.exports = function(grunt) {
 						       'coffee/testHandleBars.coffee',
 						       'coffee/TFView.coffee',
 						       'coffee/Object3DView.coffee', 
+						       'coffee/SVGNodeView.coffee',
 						       './coffee/HandlebarsHelpers.coffee',
 						      ],
 		    'test/js/test_compiled.js' : ['test/coffee/qunitExtensions.coffee',
