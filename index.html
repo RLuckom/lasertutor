@@ -19,15 +19,13 @@
         <p>Backbone / Handlebars / THREE.js tool for learning</p>
         <script>
             window.onload = function() {
-		    scene = new lasertutor.NavigableScene(document.getElementById('three'));
+		    scene = new lasertutor.NavigableScene();
 		    var axes = new lasertutor.Axes();
 		    axes.addTo(scene);
-		    scene.renderTHREE();
-                    DOGWOOD.drawSVG();
 	    };
 
         </script>
-        <div id="three" style="width: 500px;"></div>
-        <div id="svgDiv" ></ div>
+        <div id="Three" style="width: 500px;"></div>
+        <div id="Tree" style="width: 2000px;"></div>
     </body>
 </html>

@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: ['./js/templates/*.js', 'js/**/*.js'],
+                src: ['./js/templates/*.js', 'js/includes/**/*.js', 'js/src/**/*.js'],
                 dest: 'dist/js/<%= pkg.name %>.js'
             },
 	    test: {
@@ -59,17 +59,16 @@ module.exports = function(grunt) {
                     join: true,
                 },
                 files: {
-                    'js/<%= pkg.name %>_compiled.js': ['coffee/registerGlobal.coffee',
-						       'coffee/createSlider.coffee',
-						       'coffee/ThreeDNavController.coffee',
-						       'coffee/NavigationUI.coffee',
-						       'coffee/NavigableScene.coffee',
-						       'coffee/Axes.coffee',
-						       'coffee/testHandleBars.coffee',
-						       'coffee/TFView.coffee',
-						       'coffee/Object3DView.coffee', 
-						       './coffee/HandlebarsHelpers.coffee',
-						      ],
+                    'js/src/<%= pkg.name %>_compiled.js': ['coffee/registerGlobal.coffee',
+			      	                           'coffee/ThreeDNavController.coffee',
+						           'coffee/NavigationUI.coffee',
+						           'coffee/NavigableScene.coffee',
+						           'coffee/Axes.coffee',
+						           'coffee/testHandleBars.coffee',
+						           'coffee/TFView.coffee',
+						           'coffee/Object3DView.coffee', 
+						           './coffee/HandlebarsHelpers.coffee',
+						          ],
 		    'test/js/test_compiled.js' : ['test/coffee/qunitExtensions.coffee',
 		                                  'test/coffee/testqunitExtensions.coffee',
 		                                  'test/coffee/testThreeDNavController.coffee',
@@ -95,7 +94,7 @@ module.exports = function(grunt) {
 		   }
 		 },
 		 files: {
-		   "js/<%= pkg.name %>-handlebars-compiled.js": "templates/*.hbs"
+		   "js/src/<%= pkg.name %>-handlebars-compiled.js": "templates/*.hbs"
 		 }
 	    }
 	},

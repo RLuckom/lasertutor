@@ -1,5 +1,5 @@
 (function() {
-  var Axes, NavigableScene, NavigationUI, Object3DView, ThreeDNavController, exports, floatFormat, module, registerGlobal,
+  var Axes, NavigableScene, NavigationUI, Object3DView, ObjectViewTree, SceneManager, ThreeDNavController, exports, floatFormat, module, registerGlobal,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -149,10 +149,7 @@
   NavigableScene = (function(_super) {
     __extends(NavigableScene, _super);
 
-    function NavigableScene(element) {
-      var cylGeom, cylMat;
-      this.element = element;
-      this.renderTHREE = __bind(this.renderTHREE, this);
+    function NavigableScene() {
       this.mouseWheel = __bind(this.mouseWheel, this);
       this.revolveCamera = __bind(this.revolveCamera, this);
       this.mouseMove = __bind(this.mouseMove, this);
@@ -161,37 +158,18 @@
       this.ZOOMFACTOR = -.3;
       this.MIN_ZOOM = 0.01;
       this.RADIANS_PER_FRAME_UNIT = Math.PI;
-      NavigableScene.__super__.constructor.call(this, this.element);
       this.yaw = 0;
       this.pitch = 0;
-      this.scene = new THREE.Scene();
-      cylGeom = new THREE.CylinderGeometry(.4, .4, .2, 16);
-      cylMat = new THREE.MeshBasicMaterial({
-        color: 0xffff00
-      });
-      this.focalPoint = new THREE.Mesh(cylGeom, cylMat);
-      this.view = new Object3DView({
-        model: this.focalPoint,
-        name: 'focalPoint',
-        parent: 'world'
-      });
-      this.view.render();
-      document.body.appendChild(this.view.el);
-      this.scene.add(this.focalPoint);
-      this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-      this.camera.position.z = 5;
-      this.focalPoint.add(this.camera);
-      this.startCameraMatrix = this.camera.matrix.clone();
-      this.renderer = new THREE.WebGLRenderer();
-      this.element.appendChild(this.renderer.domElement);
-      this.renderer.setSize(500, 500);
+      this.scene = new SceneManager();
+      NavigableScene.__super__.constructor.call(this, this.scene.element);
+      this.startCameraMatrix = this.scene.camera.matrix.clone();
       this.interactionRegime = this.revolveCamera;
       this.controller = new lasertutor.ThreeDNavController();
     }
 
     NavigableScene.prototype.mouseDown = function(evt) {
       NavigableScene.__super__.mouseDown.call(this, evt);
-      this.startFocalRotation = this.focalPoint.rotation.clone();
+      this.startFocalRotation = this.scene.focalPoint.rotation.clone();
       return this.interactionRegime = (function() {
         switch (evt.button) {
           case 0:
@@ -208,7 +186,7 @@
 
     NavigableScene.prototype.touchStart = function(evt) {
       NavigableScene.__super__.touchStart.call(this, evt);
-      this.startFocalRotation = this.focalPoint.rotation.clone();
+      this.startFocalRotation = this.scene.focalPoint.rotation.clone();
       return this.interactionRegime = (function() {
         switch (evt.targetTouches.length) {
           case 1:
@@ -235,30 +213,25 @@
       var mouseTravel, pitch_axis, previous_pitch, previous_yaw, rotation;
       previous_pitch = this.pitch;
       previous_yaw = this.yaw;
-      mouseTravel = this.controller.normalizeMouseTravel(this.element.offsetWidth, this.element.offsetHeight, this.startPoint, xyPoint);
+      mouseTravel = this.controller.normalizeMouseTravel(this.scene.element.offsetWidth, this.scene.element.offsetHeight, this.startPoint, xyPoint);
       pitch_axis = this.controller.pitchRotationAxis(this.yaw);
       this.yaw = this.controller.clampAngle0_2PI(this.yaw + this.RADIANS_PER_FRAME_UNIT * mouseTravel.x);
       this.pitch += this.RADIANS_PER_FRAME_UNIT * mouseTravel.y;
       this.pitch = this.pitch > Math.PI ? Math.PI : this.pitch;
       this.pitch = this.pitch < 0 ? 0 : this.pitch;
-      this.focalPoint.rotation.x += pitch_axis.x * (this.pitch - previous_pitch);
-      this.focalPoint.rotation.y += pitch_axis.y * (this.pitch - previous_pitch);
-      this.focalPoint.rotation.z -= this.yaw - previous_yaw;
+      this.scene.focalPoint.rotation.x += pitch_axis.x * (this.pitch - previous_pitch);
+      this.scene.focalPoint.rotation.y += pitch_axis.y * (this.pitch - previous_pitch);
+      this.scene.focalPoint.rotation.z -= this.yaw - previous_yaw;
       rotation = this.controller.mouseXYToCameraRotation(mouseTravel.x, mouseTravel.y, this.yaw, this.RADIANS_PER_FRAME_UNIT);
       this.startPoint = xyPoint;
-      return this.view.render();
+      return this.scene.updateViews();
     };
 
     NavigableScene.prototype.mouseWheel = function(evt) {
       var new_z;
       evt.preventDefault();
-      new_z = this.camera.position.z + this.ZOOMFACTOR * -evt.deltaY;
-      return this.camera.position.z = new_z >= this.MIN_ZOOM ? new_z : this.MIN_ZOOM;
-    };
-
-    NavigableScene.prototype.renderTHREE = function() {
-      requestAnimationFrame(this.renderTHREE);
-      return this.renderer.render(this.scene, this.camera);
+      new_z = this.scene.camera.position.z + this.ZOOMFACTOR * -evt.deltaY;
+      return this.scene.camera.position.z = new_z >= this.MIN_ZOOM ? new_z : this.MIN_ZOOM;
     };
 
     NavigableScene.prototype.add = function(mesh) {
@@ -270,6 +243,129 @@
   })(NavigationUI);
 
   module.NavigableScene = NavigableScene;
+
+  ObjectViewTree = (function(_super) {
+    __extends(ObjectViewTree, _super);
+
+    function ObjectViewTree(options) {
+      this.reRender = __bind(this.reRender, this);
+      this.makeDiv = __bind(this.makeDiv, this);
+      this.object3D = options.object3D;
+      this.view = new Object3DView({
+        model: this.object3D,
+        name: options.text,
+        parent: options.parent == null ? 'world' : options.parent.text
+      });
+      ObjectViewTree.__super__.constructor.call(this, options);
+      console.log(this.toString());
+      this.move();
+    }
+
+    ObjectViewTree.prototype.makeDiv = function() {
+      this.contentDiv = this.htmlElement('div', {
+        style: 'width: 800px; height: 180px;'
+      });
+      this.view.render();
+      this.contentDiv.appendChild(this.view.el);
+      this.view.el.setAttribute('style', 'width: 800px; height: 180px;');
+      return this.view.el;
+    };
+
+    ObjectViewTree.prototype.reRender = function() {
+      var c, _i, _len, _ref, _results;
+      this.view.render();
+      _ref = this.visibleChildren();
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        c = _ref[_i];
+        _results.push(c.reRender());
+      }
+      return _results;
+    };
+
+    return ObjectViewTree;
+
+  })(ambigui.DOGWOOD.BasicTree);
+
+  module.ObjectViewTree = ObjectViewTree;
+
+  SceneManager = (function() {
+    function SceneManager(threeElId, infoElId) {
+      var cylGeom, cylMat;
+      if (threeElId == null) {
+        threeElId = 'Three';
+      }
+      if (infoElId == null) {
+        infoElId = "Tree";
+      }
+      this.updateViews = __bind(this.updateViews, this);
+      this.add = __bind(this.add, this);
+      this.renderTHREE = __bind(this.renderTHREE, this);
+      this.element = document.getElementById(threeElId);
+      this.scene = new THREE.Scene();
+      this.treeUI = new ObjectViewTree({
+        object3D: this.scene,
+        text: "scene",
+        el: document.getElementById(infoElId, {
+          marginTop: 25,
+          marginBottom: 10
+        })
+      });
+      cylGeom = new THREE.CylinderGeometry(.4, .4, .2, 16);
+      cylMat = new THREE.MeshBasicMaterial({
+        color: 0xffff00
+      });
+      this.focalPoint = new THREE.Mesh(cylGeom, cylMat);
+      this.scene.add(this.focalPoint);
+      this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      this.camera.position.z = 5;
+      this.focalPoint.add(this.camera);
+      this.treeUI.newChild({
+        text: "camera",
+        object3D: this.camera,
+        isHidden: true
+      });
+      this.treeUI.newChild({
+        text: "focalPoint",
+        object3D: this.focalPoint,
+        isHidden: true
+      });
+      this.renderer = new THREE.WebGLRenderer();
+      this.element.appendChild(this.renderer.domElement);
+      this.renderer.setSize(500, 500);
+      this.renderTHREE();
+      this.updateViews();
+    }
+
+    SceneManager.prototype.renderTHREE = function() {
+      requestAnimationFrame(this.renderTHREE);
+      return this.renderer.render(this.scene, this.camera);
+    };
+
+    SceneManager.prototype.add = function(mesh, name, parent) {
+      if (name == null) {
+        name = "noName";
+      }
+      if (parent == null) {
+        parent = null;
+      }
+      this.scene.add(mesh);
+      return this.treeUI.newChild({
+        text: name,
+        object3D: mesh,
+        isHidden: true
+      });
+    };
+
+    SceneManager.prototype.updateViews = function() {
+      return this.treeUI.reRender();
+    };
+
+    return SceneManager;
+
+  })();
+
+  module.SceneManager = SceneManager;
 
   Axes = (function() {
     function Axes() {
